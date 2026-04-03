@@ -1,7 +1,6 @@
-/* eslint-disable @next/next/no-img-element */
-
 import type { ReactNode } from "react";
 
+import Image from "next/image";
 import Link from "next/link";
 
 import { HeroParallaxImage } from "@/components/hero-parallax-image";
@@ -41,11 +40,12 @@ function ServiceGallery({
   return (
     <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
       {images.map((image) => (
-        <figure className="overflow-hidden bg-neutral-200" key={image.src}>
-          <img
+        <figure className="relative aspect-[4/3] overflow-hidden bg-neutral-200" key={image.src}>
+          <Image
             alt={image.alt || title}
-            className="h-full w-full object-cover transition-transform duration-500 hover:scale-[1.03]"
-            loading="lazy"
+            className="object-cover transition-transform duration-500 hover:scale-[1.03]"
+            fill
+            sizes="(min-width: 1280px) 22vw, (min-width: 640px) 45vw, 100vw"
             src={image.src}
           />
         </figure>
@@ -89,10 +89,12 @@ function OverviewCards({ page }: { page: GroupedServicePageData }) {
             href={buildSubserviceHref(page.slug, subservice.slug)}
             key={subservice.slug}
           >
-            <div className="aspect-[4/3] overflow-hidden bg-neutral-200">
-              <img
+            <div className="relative aspect-[4/3] overflow-hidden bg-neutral-200">
+              <Image
                 alt={subservice.title}
-                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                fill
+                sizes="(min-width: 768px) 45vw, 100vw"
                 src={image}
               />
             </div>
@@ -128,7 +130,7 @@ export function GroupedServicePageView({
         <div className="relative z-10 flex min-h-[28rem] items-end pt-28 sm:min-h-[34rem] sm:pt-32">
           <div className="site-container pb-12 sm:pb-16">
             <div className="max-w-[980px]">
-              <h1 className="font-display text-[clamp(3rem,6vw,5.25rem)] font-semibold leading-[0.95] tracking-[-0.08em] text-white">
+              <h1 className="font-display text-[clamp(2.7rem,6vw,5.25rem)] font-semibold leading-[0.95] tracking-[-0.08em] text-white">
                 {page.title}
               </h1>
               <div className="mt-6 flex max-w-[720px] items-center gap-6 border-t border-white/60 pt-6">

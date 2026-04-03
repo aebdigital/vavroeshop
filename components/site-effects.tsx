@@ -65,14 +65,14 @@ export function SiteEffects() {
         });
       },
       {
-        rootMargin: "0px 0px -10% 0px",
-        threshold: 0.12,
+        rootMargin: "0px 0px 10% 0px",
+        threshold: 0.04,
       },
     );
 
     elements.forEach((element, index) => {
       element.classList.add("reveal-on-scroll");
-      element.style.setProperty("--reveal-delay", `${Math.min((index % 8) * 45, 260)}ms`);
+      element.style.setProperty("--reveal-delay", `${Math.min((index % 8) * 24, 140)}ms`);
       observer.observe(element);
     });
 

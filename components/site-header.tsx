@@ -1,7 +1,6 @@
 "use client";
 
-/* eslint-disable @next/next/no-img-element */
-
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -22,18 +21,23 @@ export function SiteHeader() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/30 bg-white/44 shadow-[0_18px_50px_rgba(17,17,17,0.08)] backdrop-blur-[24px]">
-      <div className="site-container flex h-24 items-center justify-between gap-8">
+      <div className="site-container flex h-16 items-center justify-between gap-6 sm:h-24 sm:gap-8">
         <Link
           aria-label="Vavrostav domov"
           className="shrink-0"
           href="/"
           onClick={() => setIsOpen(false)}
         >
-          <img
-            alt={siteBrand.alt}
-            className="h-auto w-[170px] sm:w-[210px] lg:w-[250px]"
-            src={siteBrand.logo}
-          />
+          <span className="relative block aspect-[1024/329] w-[148px] sm:w-[210px] lg:w-[250px]">
+            <Image
+              alt={siteBrand.alt}
+              className="object-contain"
+              fill
+              priority
+              sizes="(min-width: 1024px) 250px, (min-width: 640px) 210px, 148px"
+              src={siteBrand.logo}
+            />
+          </span>
         </Link>
 
         <nav aria-label="Hlavná navigácia" className="hidden lg:block">
@@ -61,7 +65,7 @@ export function SiteHeader() {
           aria-controls="mobile-navigation"
           aria-expanded={isOpen}
           aria-label={isOpen ? "Zatvoriť menu" : "Otvoriť menu"}
-          className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-black/10 bg-white/60 text-black backdrop-blur-xl lg:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center text-black lg:hidden"
           onClick={() => setIsOpen((current) => !current)}
           type="button"
         >
@@ -81,22 +85,32 @@ export function SiteHeader() {
         </button>
       </div>
 
-      {isOpen ? (
+      <div
+        className={`overflow-hidden transition-[max-height,opacity,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] lg:hidden ${
+          isOpen ? "max-h-[28rem] opacity-100 translate-y-0" : "pointer-events-none max-h-0 opacity-0 -translate-y-3"
+        }`}
+      >
         <nav
           aria-label="Mobilná navigácia"
-          className="border-t border-black/10 bg-white/70 backdrop-blur-[24px] lg:hidden"
+          className="border-t border-black/8 bg-white/62 backdrop-blur-[24px]"
           id="mobile-navigation"
         >
-          <div className="site-container py-5">
-            <ul className="space-y-4">
-              {mainNav.map((item) => {
+          <div className="site-container py-4">
+            <ul className="space-y-1">
+              {mainNav.map((item, index) => {
                 const active = isActivePath(pathname, item.href);
 
                 return (
-                  <li key={item.href}>
+                  <li
+                    className={`transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                      isOpen ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0"
+                    }`}
+                    key={item.href}
+                    style={{ transitionDelay: isOpen ? `${index * 45}ms` : "0ms" }}
+                  >
                     <Link
-                      className={`block text-lg font-bold ${
-                        active ? "text-black" : "text-black/70"
+                      className={`block rounded-2xl px-4 py-3 text-base font-bold tracking-[-0.02em] ${
+                        active ? "bg-[var(--color-accent)] text-black" : "text-black/72"
                       }`}
                       href={item.href}
                       onClick={() => setIsOpen(false)}
@@ -109,7 +123,7 @@ export function SiteHeader() {
             </ul>
           </div>
         </nav>
-      ) : null}
+      </div>
     </header>
   );
 }

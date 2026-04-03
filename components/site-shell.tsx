@@ -1,7 +1,6 @@
-/* eslint-disable @next/next/no-img-element */
-
 import type { ReactNode } from "react";
 
+import Image from "next/image";
 import Link from "next/link";
 
 import { HeroSlideshow } from "@/components/hero-slideshow";
@@ -60,11 +59,12 @@ function ServiceGallery({
   return (
     <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
       {images.map((image) => (
-        <figure className="overflow-hidden bg-neutral-200" key={image.src}>
-          <img
+        <figure className="relative aspect-[4/3] overflow-hidden bg-neutral-200" key={image.src}>
+          <Image
             alt={image.alt || title}
-            className="h-full w-full object-cover transition-transform duration-500 hover:scale-[1.03]"
-            loading="lazy"
+            className="object-cover transition-transform duration-500 hover:scale-[1.03]"
+            fill
+            sizes="(min-width: 1280px) 22vw, (min-width: 640px) 45vw, 100vw"
             src={image.src}
           />
         </figure>
@@ -146,9 +146,11 @@ function SiteFooter() {
   return (
     <footer className="relative overflow-hidden bg-[var(--color-dark)] text-white" id="contact">
       <div aria-hidden className="absolute inset-0">
-        <img
+        <Image
           alt=""
-          className="h-full w-full object-cover opacity-25"
+          className="object-cover opacity-25"
+          fill
+          sizes="100vw"
           src={homePage.heroImages[0]}
         />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,5,5,0.7)_0%,rgba(5,5,5,0.78)_24%,rgba(5,5,5,0.9)_58%,rgba(5,5,5,0.98)_100%)]" />
@@ -157,11 +159,15 @@ function SiteFooter() {
 
       <div className="site-container relative z-10 py-16 sm:py-20">
         <div className="pb-10">
-          <img
-            alt={siteBrand.alt}
-            className="w-[165px] bg-white p-4 sm:w-[200px]"
-            src={siteBrand.logo}
-          />
+          <div className="relative aspect-[1024/329] w-[165px] bg-white p-4 sm:w-[200px]">
+            <Image
+              alt={siteBrand.alt}
+              className="object-contain"
+              fill
+              sizes="(min-width: 640px) 200px, 165px"
+              src={siteBrand.logo}
+            />
+          </div>
         </div>
 
         <div className="grid gap-12 border-t border-white/10 pt-12 md:grid-cols-2 xl:grid-cols-[1fr_0.9fr_0.9fr_1.2fr]">
@@ -302,11 +308,14 @@ export function HomePageView() {
         <div className="site-container flex flex-wrap items-center justify-center gap-x-10 gap-y-6 py-8">
           {homePage.partners.map((partner) =>
             partner.kind === "image" ? (
-              <img
+              <Image
                 alt={partner.alt}
                 className="h-8 w-auto object-contain sm:h-10"
+                height={80}
                 key={partner.src}
+                sizes="(min-width: 640px) 160px, 120px"
                 src={partner.src}
+                width={220}
               />
             ) : (
               <div className="flex items-center gap-2 text-[1.7rem] font-semibold tracking-[-0.03em]" key={partner.label}>
@@ -332,9 +341,11 @@ export function HomePageView() {
                 href={service.href}
                 key={service.href}
               >
-                <img
+                <Image
                   alt={service.title}
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                  fill
+                  sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
                   src={service.image}
                 />
                 <div className="absolute inset-0 bg-black/28 transition-colors duration-500 group-hover:bg-black/16" />
@@ -361,20 +372,24 @@ export function HomePageView() {
               ))}
             </div>
 
-            <div className="mt-10 overflow-hidden bg-neutral-200">
-              <img
+            <div className="relative mt-10 aspect-[4/5] overflow-hidden bg-neutral-200">
+              <Image
                 alt="Tepelné čerpadlo počas montáže"
-                className="h-full w-full object-cover"
+                className="object-cover"
+                fill
+                sizes="(min-width: 1280px) 42vw, 100vw"
                 src={homePage.about.leftImage}
               />
             </div>
           </div>
 
           <div className="pt-2 xl:pt-0">
-            <div className="overflow-hidden bg-neutral-200">
-              <img
+            <div className="relative aspect-[4/5] overflow-hidden bg-neutral-200">
+              <Image
                 alt="Bosch zariadenie a tím Vavrostav"
-                className="h-full w-full object-cover"
+                className="object-cover"
+                fill
+                sizes="(min-width: 1280px) 46vw, 100vw"
                 src={homePage.about.rightImage}
               />
             </div>
@@ -413,7 +428,7 @@ export function ServicePageView({ page }: { page: ServicePageData }) {
         <div className="relative z-10 flex min-h-[25rem] items-end pt-28 sm:min-h-[31rem] sm:pt-32">
           <div className="site-container pb-12 sm:pb-20">
             <div className="max-w-[980px]">
-              <h1 className="font-display text-[clamp(3rem,6vw,5.25rem)] font-semibold leading-[0.95] tracking-[-0.08em] text-white">
+              <h1 className="font-display text-[clamp(2.7rem,6vw,5.25rem)] font-semibold leading-[0.95] tracking-[-0.08em] text-white">
                 {page.title}
               </h1>
               <div className="mt-6 flex max-w-[720px] items-center gap-6 border-t border-white/60 pt-6">

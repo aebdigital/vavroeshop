@@ -105,7 +105,7 @@ export function ContactPageView() {
       </section>
 
       <section className="overflow-hidden border-t border-black/10">
-        <div className="h-[28rem] w-full bg-neutral-100 sm:h-[34rem] lg:h-[40rem]">
+        <div className="h-[14rem] w-full bg-neutral-100 sm:h-[17rem] lg:h-[20rem]">
           <iframe
             className="h-full w-full"
             loading="lazy"

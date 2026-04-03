@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 type HeroSlideshowProps = {
@@ -79,12 +80,20 @@ export function HeroSlideshow({ images }: HeroSlideshowProps) {
           }`}
         >
           <div
-            className="absolute -inset-x-[4%] -inset-y-[15%] bg-cover bg-center will-change-transform"
+            className="absolute -inset-x-[4%] -inset-y-[15%] will-change-transform"
             ref={(element) => {
               layerRefs.current[index] = element;
             }}
-            style={{ backgroundImage: `url(${image})` }}
-          />
+          >
+            <Image
+              alt=""
+              className="object-cover"
+              fill
+              priority={index === 0}
+              sizes="100vw"
+              src={image}
+            />
+          </div>
         </div>
       ))}
     </div>
