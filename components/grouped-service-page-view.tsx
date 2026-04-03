@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { HeroParallaxImage } from "@/components/hero-parallax-image";
+import { LightboxGallery } from "@/components/lightbox-gallery";
 import {
   buildSubserviceHref,
   type GroupedServicePageData,
@@ -23,34 +24,6 @@ function SectionTitle({ children }: { children: ReactNode }) {
     <h2 className="mt-3 font-display text-[clamp(2.8rem,4vw,4.8rem)] font-semibold leading-[0.95] tracking-[-0.05em] text-black">
       {children}
     </h2>
-  );
-}
-
-function ServiceGallery({
-  images,
-  title,
-}: {
-  images: GroupedServiceSubpageData["images"];
-  title: string;
-}) {
-  if (!images || images.length === 0) {
-    return null;
-  }
-
-  return (
-    <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
-      {images.map((image) => (
-        <figure className="relative aspect-[4/3] overflow-hidden bg-neutral-200" key={image.src}>
-          <Image
-            alt={image.alt || title}
-            className="object-cover transition-transform duration-500 hover:scale-[1.03]"
-            fill
-            sizes="(min-width: 1280px) 22vw, (min-width: 640px) 45vw, 100vw"
-            src={image.src}
-          />
-        </figure>
-      ))}
-    </div>
   );
 }
 
@@ -177,7 +150,9 @@ export function GroupedServicePageView({
                   ))}
                 </div>
 
-                <ServiceGallery images={subservice.images} title={subservice.title} />
+                {subservice.images ? (
+                  <LightboxGallery images={subservice.images} title={subservice.title} />
+                ) : null}
               </section>
             ) : (
               <section>

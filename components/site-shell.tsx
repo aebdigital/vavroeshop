@@ -5,6 +5,7 @@ import Link from "next/link";
 
 import { HeroSlideshow } from "@/components/hero-slideshow";
 import { HeroParallaxImage } from "@/components/hero-parallax-image";
+import { LightboxGallery } from "@/components/lightbox-gallery";
 import { PageTransition } from "@/components/page-transition";
 import { SectionIndicator } from "@/components/section-indicator";
 import { SiteHeader } from "@/components/site-header";
@@ -13,8 +14,8 @@ import {
   footerLinkGroups,
   homePage,
   type LegalPageData,
-  siteBrand,
   type ServicePageData,
+  siteBrand,
   socialLinks,
 } from "@/lib/site-content";
 
@@ -42,34 +43,6 @@ function HeroButton({ href, label }: { href: string; label: string }) {
     >
       {label}
     </Link>
-  );
-}
-
-function ServiceGallery({
-  images,
-  title,
-}: {
-  images: ServicePageData["sections"][number]["images"];
-  title: string;
-}) {
-  if (!images || images.length === 0) {
-    return null;
-  }
-
-  return (
-    <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
-      {images.map((image) => (
-        <figure className="relative aspect-[4/3] overflow-hidden bg-neutral-200" key={image.src}>
-          <Image
-            alt={image.alt || title}
-            className="object-cover transition-transform duration-500 hover:scale-[1.03]"
-            fill
-            sizes="(min-width: 1280px) 22vw, (min-width: 640px) 45vw, 100vw"
-            src={image.src}
-          />
-        </figure>
-      ))}
-    </div>
   );
 }
 
@@ -453,7 +426,7 @@ export function ServicePageView({ page }: { page: ServicePageData }) {
                   ))}
                 </div>
 
-                <ServiceGallery images={section.images} title={section.title} />
+                {section.images ? <LightboxGallery images={section.images} title={section.title} /> : null}
               </section>
             ))}
           </div>
