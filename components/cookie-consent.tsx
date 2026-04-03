@@ -59,7 +59,7 @@ function subscribeToCookieConsent(onStoreChange: () => void) {
 }
 
 function getCookieConsentSnapshot() {
-  return parseCookiePreferences(localStorage.getItem(COOKIE_CONSENT_STORAGE_KEY));
+  return localStorage.getItem(COOKIE_CONSENT_STORAGE_KEY);
 }
 
 function getCookieConsentServerSnapshot() {
@@ -70,10 +70,17 @@ export function CookieConsent() {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [analyticsEnabled, setAnalyticsEnabled] = useState(false);
   const [marketingEnabled, setMarketingEnabled] = useState(false);
-  const storedPreferences = useSyncExternalStore(
+  const storedPreferencesRaw = useSyncExternalStore(
     subscribeToCookieConsent,
     getCookieConsentSnapshot,
     getCookieConsentServerSnapshot,
+  );
+  const storedPreferences = useMemo(
+    () =>
+      typeof storedPreferencesRaw === "undefined"
+        ? undefined
+        : parseCookiePreferences(storedPreferencesRaw),
+    [storedPreferencesRaw],
   );
 
   const openSettings = useCallback(() => {
