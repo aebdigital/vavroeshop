@@ -1,0 +1,11 @@
+/
+_snapshot/tmp/bricks_template-sitemap.xml:https://www.vavrostav.sk/default-sitemap.xsl?sitemap=bricks_template"?>
+_snapshot/tmp/bricks_template-sitemap.xml:https://www.vavrostav.sk/template/footer/
+_snapshot/tmp/bricks_template-sitemap.xml:https://www.vavrostav.sk/template/heading/
+_snapshot/tmp/page-sitemap.xml:https://www.vavrostav.sk/cookies/
+_snapshot/tmp/page-sitemap.xml:https://www.vavrostav.sk/default-sitemap.xsl?sitemap=page"?>
+_snapshot/tmp/page-sitemap.xml:https://www.vavrostav.sk/klimatizacie/
+_snapshot/tmp/page-sitemap.xml:https://www.vavrostav.sk/kurenarske-prace/
+_snapshot/tmp/page-sitemap.xml:https://www.vavrostav.sk/ochrana-osobnych-udajov/
+_snapshot/tmp/page-sitemap.xml:https://www.vavrostav.sk/odpady-a-kanalizacie/
+_snapshot/tmp/page-sitemap.xml:https://www.vavrostav.sk/vodoinstalaterske-prace/

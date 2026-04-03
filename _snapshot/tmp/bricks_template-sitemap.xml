@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This sitemap was dynamically generated on 9. marca 2026 at 3:15 by All in One SEO v4.8.2 - the original SEO plugin for WordPress. -->
+
+<?xml-stylesheet type="text/xsl" href="https://www.vavrostav.sk/default-sitemap.xsl?sitemap=bricks_template"?>
+<urlset
+	xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+	xmlns:xhtml="http://www.w3.org/1999/xhtml"
+	xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+>
+	<url>
+		<loc><![CDATA[https://www.vavrostav.sk/template/footer/]]></loc>
+		<lastmod><![CDATA[2025-10-17T16:12:35+00:00]]></lastmod>
+		<changefreq><![CDATA[weekly]]></changefreq>
+		<priority><![CDATA[0.7]]></priority>
+	</url>
+	<url>
+		<loc><![CDATA[https://www.vavrostav.sk/template/heading/]]></loc>
+		<lastmod><![CDATA[2025-05-21T09:49:20+00:00]]></lastmod>
+		<changefreq><![CDATA[weekly]]></changefreq>
+		<priority><![CDATA[0.7]]></priority>
+	</url>
+</urlset>
+
+<!--
+Performance optimized by W3 Total Cache. Learn more: https://www.boldgrid.com/w3-total-cache/
+
+
+Served from: www.vavrostav.sk @ 2026-03-09 03:15:25 by W3 Total Cache
+-->
