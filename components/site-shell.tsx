@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { CookieSettingsTrigger } from "@/components/cookie-settings-trigger";
 import { HeroSlideshow } from "@/components/hero-slideshow";
 import { HeroParallaxImage } from "@/components/hero-parallax-image";
 import { LightboxGallery } from "@/components/lightbox-gallery";
@@ -162,9 +163,15 @@ function SiteFooter() {
             <ul className="mt-6 space-y-3 text-lg text-white/80">
               {legalLinks.map((link) => (
                 <li key={link.href}>
-                  <Link className="transition-colors hover:text-white" href={link.href}>
-                    {link.label}
-                  </Link>
+                  {link.href === "/cookies" ? (
+                    <CookieSettingsTrigger className="cursor-pointer text-left transition-colors hover:text-white">
+                      {link.label}
+                    </CookieSettingsTrigger>
+                  ) : (
+                    <Link className="transition-colors hover:text-white" href={link.href}>
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

@@ -26,6 +26,10 @@ body.lightbox-locked {
   overflow: hidden;
 }
 
+body.cookie-modal-open {
+  overflow: hidden;
+}
+
 h1,
 h2,
 h3,
@@ -107,6 +111,18 @@ img {
   animation: lightbox-slide-exit-prev 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+.cookie-banner-enter {
+  animation: cookie-banner-in 460ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.cookie-overlay-enter {
+  animation: cookie-overlay-in 220ms ease both;
+}
+
+.cookie-dialog-enter {
+  animation: cookie-dialog-in 360ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 @keyframes page-enter {
   from {
     opacity: 0;
@@ -133,6 +149,40 @@ img {
   from {
     opacity: 0;
     transform: translate3d(0, 26px, 0) scale(0.965);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes cookie-banner-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 26px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes cookie-overlay-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes cookie-dialog-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0) scale(0.97);
   }
 
   to {
@@ -215,7 +265,10 @@ img {
   .lightbox-slide-enter-next,
   .lightbox-slide-enter-prev,
   .lightbox-slide-exit-next,
-  .lightbox-slide-exit-prev {
+  .lightbox-slide-exit-prev,
+  .cookie-banner-enter,
+  .cookie-overlay-enter,
+  .cookie-dialog-enter {
     animation: none;
   }
 }

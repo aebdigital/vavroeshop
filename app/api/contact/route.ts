@@ -57,11 +57,10 @@ export async function POST(request: Request) {
   }
 
   const apiKey = process.env.SMTP2GO_API_KEY;
-  const toEmail = process.env.SMTP2GO_TO_EMAIL;
-  const fromEmail = process.env.SMTP2GO_FROM_EMAIL;
-  const fromName = process.env.SMTP2GO_FROM_NAME || "Vavrostav Web";
+  const recipientEmail = process.env.CONTACT_FORM_RECIPIENT;
+  const sender = process.env.SMTP2GO_SENDER;
 
-  if (!apiKey || !toEmail || !fromEmail) {
+  if (!apiKey || !recipientEmail || !sender) {
     return NextResponse.json(
       {
         message:
@@ -101,10 +100,10 @@ export async function POST(request: Request) {
       body: JSON.stringify({
         api_key: apiKey,
         html_body: htmlBody,
-        sender: `${fromName} <${fromEmail}>`,
+        sender,
         subject,
         text_body: textBody,
-        to: [toEmail],
+        to: [recipientEmail],
       }),
       headers: {
         Accept: "application/json",

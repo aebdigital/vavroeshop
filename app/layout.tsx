@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Epilogue, Inter } from "next/font/google";
 import "lenis/dist/lenis.css";
 
+import { CookieConsent } from "@/components/cookie-consent";
 import { SiteEffects } from "@/components/site-effects";
 import { contactDetails, siteBrand, socialLinks } from "@/lib/site-content";
 import "./globals.css";
@@ -102,6 +103,7 @@ export default function RootLayout({
         />
         <SiteEffects />
         {children}
+        <CookieConsent />
       </body>
     </html>
   );
