@@ -168,7 +168,7 @@ export const homePage: HomePageData = {
     intro: [
       "Sme firma, ktorá má rada nové technológie a inovácie. Snažíme sa stále zdokonalovať a rozvíjať. Záruka. Kvalita. Odbornosť. Rýchlosť. Dobre odvedená práca = spokojný zákazník. A spokojnému zákazníkovi sa nevyrovná žiadna reklama. Vážime si každého zákazníka, pretože Vy nám dávate prácu, ktorá nás baví.",
     ],
-    leftImage: upload("2025/05/IMG_3983.jpg"),
+    leftImage: upload("2026/04/blurred.png"),
     rightImage: upload("2025/05/IMG_1846.jpg"),
     rightText: [
       "Práca v inštalatérskom priemysle, ale aj v stavebníctve je rozmanitá a krásna v tom, že sa stále vyvíjajú novšie a lepšie spôsoby, ako svoju prácu vylepšovať. Objavujú sa kvalitnejšie materiály, ktoré sú odolnejšie a zdravotne nezávadné.",
