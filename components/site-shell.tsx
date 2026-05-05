@@ -114,9 +114,6 @@ function SocialIcon({ icon }: { icon: (typeof socialLinks)[number]["icon"] }) {
 }
 
 function SiteFooter() {
-  const navigationLinks = footerLinkGroups[0]?.links ?? [];
-  const legalLinks = footerLinkGroups[1]?.links ?? [];
-
   return (
     <footer className="relative overflow-hidden bg-[var(--color-dark)] text-white" id="contact">
       <div aria-hidden className="absolute inset-0">
@@ -144,42 +141,31 @@ function SiteFooter() {
           </div>
         </div>
 
-        <div className="grid gap-12 border-t border-white/10 pt-12 md:grid-cols-2 xl:grid-cols-[1fr_0.9fr_0.9fr_1.2fr]">
-          <div>
-            <h3 className="text-3xl font-semibold tracking-[-0.03em] text-white">Navigácia</h3>
-            <ul className="mt-6 space-y-3 text-lg text-white/80">
-              {navigationLinks.map((link) => (
-                <li key={link.href}>
-                  <Link className="transition-colors hover:text-white" href={link.href}>
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="grid gap-12 border-t border-white/10 pt-12 md:grid-cols-2 xl:grid-cols-5">
+          {footerLinkGroups.map((group) => (
+            <div key={group.title}>
+              <h3 className="text-2xl font-semibold tracking-[-0.03em] text-white">{group.title}</h3>
+              <ul className="mt-6 space-y-3 text-[0.95rem] text-white/80">
+                {group.links.map((link) => (
+                  <li key={link.href}>
+                    {link.href === "/cookies" ? (
+                      <CookieSettingsTrigger className="cursor-pointer text-left transition-colors hover:text-white">
+                        {link.label}
+                      </CookieSettingsTrigger>
+                    ) : (
+                      <Link className="transition-colors hover:text-white" href={link.href}>
+                        {link.label}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
 
           <div>
-            <h3 className="text-3xl font-semibold tracking-[-0.03em] text-white">Legal</h3>
-            <ul className="mt-6 space-y-3 text-lg text-white/80">
-              {legalLinks.map((link) => (
-                <li key={link.href}>
-                  {link.href === "/cookies" ? (
-                    <CookieSettingsTrigger className="cursor-pointer text-left transition-colors hover:text-white">
-                      {link.label}
-                    </CookieSettingsTrigger>
-                  ) : (
-                    <Link className="transition-colors hover:text-white" href={link.href}>
-                      {link.label}
-                    </Link>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-3xl font-semibold tracking-[-0.03em] text-white">Adresa</h3>
-            <div className="mt-6 space-y-2 text-lg text-white/80">
+            <h3 className="text-2xl font-semibold tracking-[-0.03em] text-white">Adresa</h3>
+            <div className="mt-6 space-y-2 text-[0.95rem] text-white/80">
               {contactDetails.address.map((line) => (
                 <p key={line}>{line}</p>
               ))}
@@ -187,8 +173,8 @@ function SiteFooter() {
           </div>
 
           <div>
-            <h3 className="text-3xl font-semibold tracking-[-0.03em] text-white">Kontakt</h3>
-            <div className="mt-6 space-y-2 text-lg text-white/80">
+            <h3 className="text-2xl font-semibold tracking-[-0.03em] text-white">Kontakt</h3>
+            <div className="mt-6 space-y-2 text-[0.95rem] text-white/80">
               <p className="font-semibold text-white">{contactDetails.company}</p>
               <p>
                 <a className="transition-colors hover:text-white" href={`mailto:${contactDetails.email}`}>

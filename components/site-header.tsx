@@ -58,6 +58,13 @@ export function SiteHeader() {
                 </li>
               );
             })}
+            <li>
+              <Link href="/kosik" aria-label="Košík" className={`flex items-center gap-2 border-b-2 pb-1 transition-colors ${isActivePath(pathname, "/kosik") ? "border-black text-black" : "border-transparent text-black hover:border-black/50"}`}>
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0L5 21h14m-12 0a2 2 0 104 0 2 2 0 00-4 0zm8 0a2 2 0 104 0 2 2 0 00-4 0z" />
+                </svg>
+              </Link>
+            </li>
           </ul>
         </nav>
 
@@ -120,6 +127,21 @@ export function SiteHeader() {
                   </li>
                 );
               })}
+              <li
+                className={`transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${isOpen ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0"}`}
+                style={{ transitionDelay: isOpen ? `${mainNav.length * 45}ms` : "0ms" }}
+              >
+                <Link
+                  className={`flex items-center gap-3 rounded-2xl px-4 py-3 text-base font-bold tracking-[-0.02em] ${isActivePath(pathname, "/kosik") ? "bg-[var(--color-accent)] text-black" : "text-black/72"}`}
+                  href="/kosik"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0L5 21h14m-12 0a2 2 0 104 0 2 2 0 00-4 0zm8 0a2 2 0 104 0 2 2 0 00-4 0z" />
+                  </svg>
+                  Košík
+                </Link>
+              </li>
             </ul>
           </div>
         </nav>

@@ -119,6 +119,7 @@ export const mainNav: NavItem[] = [
   { href: "/klimatizacie", label: "Klimatizácie" },
   { href: "/vodoinstalaterske-prace", label: "Vodoinštalatérske práce" },
   { href: "/odpady-a-kanalizacie", label: "Odpady a kanalizácie" },
+  { href: "/obchod", label: "Obchod" },
   { href: "/kontakt", label: "Kontakt" },
 ];
 
@@ -134,6 +135,15 @@ export const footerLinkGroups = [
       { href: "/ochrana-osobnych-udajov", label: "Ochrana osobných údajov" },
     ],
     title: "Legal",
+  },
+  {
+    links: [
+      { href: "/postovne-a-doprava", label: "Poštovné a doprava" },
+      { href: "/obchodne-podmienky", label: "Obchodné podmienky" },
+      { href: "/reklamacne-podmienky", label: "Reklamačné podmienky" },
+      { href: "/podmienky-ochrany-osobnych-udajov", label: "Podmienky ochrany osobných údajov" },
+    ],
+    title: "ESHOP Legal",
   },
 ];
 
@@ -701,6 +711,42 @@ export const legalPages: LegalPageData[] = [
     kind: "legal",
     slug: "zasady-pouzivania-suborov-cookies",
     title: "Zásady používania súborov cookies",
+  },
+  {
+    blocks: [
+      "Informácie o poštovnom a doprave budú doplnené.",
+    ],
+    description: "Informácie o poštovnom a doprave – Vavrostav e-shop.",
+    kind: "legal",
+    slug: "postovne-a-doprava",
+    title: "Poštovné a doprava",
+  },
+  {
+    blocks: [
+      "Obchodné podmienky budú doplnené.",
+    ],
+    description: "Obchodné podmienky e-shopu Vavrostav.",
+    kind: "legal",
+    slug: "obchodne-podmienky",
+    title: "Obchodné podmienky",
+  },
+  {
+    blocks: [
+      "Reklamačné podmienky budú doplnené.",
+    ],
+    description: "Reklamačné podmienky e-shopu Vavrostav.",
+    kind: "legal",
+    slug: "reklamacne-podmienky",
+    title: "Reklamačné podmienky",
+  },
+  {
+    blocks: [
+      "Podmienky ochrany osobných údajov budú doplnené.",
+    ],
+    description: "Podmienky ochrany osobných údajov – Vavrostav e-shop.",
+    kind: "legal",
+    slug: "podmienky-ochrany-osobnych-udajov",
+    title: "Podmienky ochrany osobných údajov",
   },
 ];
 
